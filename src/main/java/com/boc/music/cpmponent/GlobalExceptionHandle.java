@@ -1,4 +1,4 @@
-package com.boc.music.config;
+package com.boc.music.cpmponent;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

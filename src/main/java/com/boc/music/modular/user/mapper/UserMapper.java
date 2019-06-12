@@ -1,6 +1,6 @@
-package com.boc.music.user.mapper;
+package com.boc.music.modular.user.mapper;
 
-import com.boc.music.user.entity.User;
+import com.boc.music.modular.user.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

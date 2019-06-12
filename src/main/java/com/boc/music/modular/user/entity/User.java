@@ -1,4 +1,4 @@
-package com.boc.music.user.entity;
+package com.boc.music.modular.user.entity;
 
 import java.time.LocalDateTime;
 

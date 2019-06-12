@@ -1,9 +1,8 @@
-package com.boc.music.parse;
+package com.boc.music.parse.impl;
 
+import com.boc.music.parse.ResourceParse;
 import com.boc.music.utils.UrlUtil;
 import org.springframework.boot.json.BasicJsonParser;
-import org.springframework.boot.json.GsonJsonParser;
-import org.springframework.boot.json.JsonParser;
 import org.springframework.util.Assert;
 
 import java.util.Map;

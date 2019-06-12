@@ -5,8 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * url请求工具类
- *
+ * url工具类
  * @author boc
  */
 public class UrlUtil {

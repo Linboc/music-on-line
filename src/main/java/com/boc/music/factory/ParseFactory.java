@@ -1,6 +1,6 @@
 package com.boc.music.factory;
 
-import com.boc.music.parse.KuWoParse;
+import com.boc.music.parse.impl.KuWoParse;
 import com.boc.music.parse.ResourceParse;
 
 import java.util.HashMap;

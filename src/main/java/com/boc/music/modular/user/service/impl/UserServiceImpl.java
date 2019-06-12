@@ -1,9 +1,9 @@
-package com.boc.music.user.service.impl;
+package com.boc.music.modular.user.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.boc.music.user.entity.User;
-import com.boc.music.user.mapper.UserMapper;
-import com.boc.music.user.service.UserService;
+import com.boc.music.modular.user.entity.User;
+import com.boc.music.modular.user.mapper.UserMapper;
+import com.boc.music.modular.user.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

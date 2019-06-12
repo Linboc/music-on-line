@@ -1,6 +1,6 @@
-package com.boc.music.user.service;
+package com.boc.music.modular.user.service;
 
-import com.boc.music.user.entity.User;
+import com.boc.music.modular.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

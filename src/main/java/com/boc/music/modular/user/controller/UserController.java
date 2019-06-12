@@ -1,10 +1,9 @@
-package com.boc.music.user.controller;
+package com.boc.music.modular.user.controller;
 
 
-import com.boc.music.user.entity.User;
-import com.boc.music.user.service.UserService;
+import com.boc.music.modular.user.entity.User;
+import com.boc.music.modular.user.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
