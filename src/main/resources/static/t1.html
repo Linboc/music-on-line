@@ -22,47 +22,47 @@
             url: "7149578",
             title: "爱情废柴",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "324244",
             title: "青花瓷",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "440623",
             title: "说好的幸福呢",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "6176029",
             title: "算什么男人",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "3197116",
             title: "明明就",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "4078923",
             title: "珊瑚海",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "268702",
             title: "霍元甲",
             singer: "周杰伦",
-            source: "kw"
+            source: KW
         }, {
             url: "285030",
             title: "够爱",
             singer: "东城卫",
-            source: "kw"
+            source: KW
         }, {
             url: "6766593",
             title: "爱怎么喊停",
             singer: "曾沛慈",
-            source: "kw"
+            source: KW
         }];
 
         var index = 0;
@@ -88,7 +88,7 @@
                 videoElement.src = musics[index].url;
             }
             var currentInfo = document.getElementById("currentInfo");
-            currentInfo.innerHTML = musics[index].singer + " - " + musics[index].title
+            currentInfo.innerHTML = musics[index].singer + " - " + musics[index].title;
             var nextInfo = document.getElementById("nextInfo");
             nextInfo.innerHTML = musics[getNextIndex()].singer + " - " + musics[getNextIndex()].title;
         }
@@ -107,6 +107,13 @@
             return musics.length - 1 === index ? 0 : index + 1;
         }
 
+        function changeMusicByKWID() {
+            var videoElement = document.getElementById("theVideo");
+            var kuIdInput = document.getElementById("kuIdInput");
+            videoElement.src = '';
+            getKwUrl(kwUrl + kuIdInput.value)
+        }
+
         //异步请求获取到的值不能返回
         function getKwUrl(url, type) {
             var videoElement = document.getElementById("theVideo");
@@ -120,6 +127,42 @@
             };
         }
 
+        function MusicObj(url, title, singer, source){
+            this.url = url;
+            this.title = title;
+            this.singer = singer;
+            this.source = source;
+        }
+
+        function changMusicList(url, type) {
+            var videoElement = document.getElementById("theVideo");
+            var request = new XMLHttpRequest();
+            request.open(type ? type : "GET", url);
+            request.send(null);
+            request.onreadystatechange = function (res) {
+                if (res.currentTarget.readyState === 4 && (res.currentTarget.status === 200 || res.currentTarget.status === 304)) {
+                    var result = JSON.parse(res.currentTarget.responseText).data.list;
+                    musics = result.map(function(item) {
+                        return new MusicObj(item.rid, item.name, item.artist, KW);
+                    });
+                    index = 0;
+                    changeMusic();
+                }
+            };
+        }
+
+        function search() {
+            var search = document.getElementById("search").value;
+            var page = document.getElementById("page").value;
+            var searchURL = searchFormat(search, page);
+            changMusicList(searchURL);
+        }
+
+        function searchFormat(content, page) {
+            page = page ? page : 1;
+            return "http://www.kuwo.cn/api/www/search/searchMusicBykeyWord?key=" + content + "&pn=" + page + "&rn=10";
+        }
+
     </script>
 </head>
 <body onload="eventWindowLoaded()">
@@ -128,6 +171,8 @@
 </div>
 <font id="currentInfo"></font>　->　<font id="nextInfo">下一首</font>
 <button onclick="prec()">上一首</button>
-<button onclick="next()">下一首</button>
+<button onclick="next()">下一首</button><br/>
+<input  id="kuIdInput"/><button onclick="changeMusicByKWID()">播放</button><br/>
+<input placeholder="搜索内容" id="search"/><input placeholder="页数" id="page"/><button onclick="search()">搜索</button>
 </body>
-</html> 
+</html>
