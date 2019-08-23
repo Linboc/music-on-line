@@ -22,7 +22,7 @@ public class KuWoController {
     private ResourceParse parse = ParseFactory.createKuWoParse();
 
     @GetMapping("/resource/{id}")
-    public String resource(@PathVariable("id") String musicId, HttpServletResponse resp) {
+    public String resource(@PathVariable("id") String musicId) {
         return parse.parseUrl(MapBuild.build("musicId", musicId).get());
     }
 
