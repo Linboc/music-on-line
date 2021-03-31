@@ -93,6 +93,7 @@
             } else {
                 videoElement.src = musics[index].url;
             }
+            videoElement.poster = musics[index].albumpic;
             var currentInfo = document.getElementById("currentInfo");
             currentInfo.innerHTML = musics[index].singer + " - " + musics[index].title;
             var nextInfo = document.getElementById("nextInfo");
@@ -133,11 +134,12 @@
             };
         }
 
-        function MusicObj(url, title, singer, source){
+        function MusicObj(url, title, singer, source, albumpic){
             this.url = url;
             this.title = title;
             this.singer = singer;
             this.source = source;
+            this.albumpic = albumpic;
         }
 
         function changMusicList(url, type) {
@@ -149,7 +151,7 @@
                 if (res.currentTarget.readyState === 4 && (res.currentTarget.status === 200 || res.currentTarget.status === 304)) {
                     var result = JSON.parse(res.currentTarget.responseText).data.list;
                     musics = result.map(function(item) {
-                        return new MusicObj(item.rid, item.name, item.artist, KW);
+                        return new MusicObj(item.rid, item.name, item.artist, KW, item.albumpic);
                     });
                     index = 0;
                     changeMusic();
@@ -173,13 +175,13 @@
 </head>
 <body onload="eventWindowLoaded()">
 <div>
-    <video autoplay loop controls id="theVideo" onwaiting="next()" src="" width="500" height="500" poster="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561541327600&di=681f8a2105bc6bcf26913aae441982ea&imgtype=0&src=http%3A%2F%2Fimg1.dongqiudi.com%2Ffastdfs1%2FM00%2F50%2F20%2FpIYBAFjfuuiAZlCOAAL0oYDDM1k544.png"></video>
+    <video autoplay loop controls id="theVideo" onwaiting="next()" src="" style="object-fit:fill;" width="500" height="500" poster="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561541327600&di=681f8a2105bc6bcf26913aae441982ea&imgtype=0&src=http%3A%2F%2Fimg1.dongqiudi.com%2Ffastdfs1%2FM00%2F50%2F20%2FpIYBAFjfuuiAZlCOAAL0oYDDM1k544.png"></video>
 </div>
 <font id="currentInfo"></font>　->　<font id="nextInfo">下一首</font>
 <br>
 <button onclick="prec()">上一首</button>
 <button onclick="next()">下一首</button><br/>
-<input  id="kuIdInput"/><button onclick="changeMusicByKWID()">播放</button><br/>
+<input id="kuIdInput"/><button onclick="changeMusicByKWID()">播放</button><br/>
 <input placeholder="搜索内容" id="search"/><input placeholder="页数" id="page"/><button onclick="search()">搜索</button>
 </body>
 </html>
