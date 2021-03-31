@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+    </style>
+
+    <script>
+        function eventWindowLoaded() {
+            var input = document.getElementById("acId");
+            input.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                // 只响应Enter按钮
+                if (event.keyCode === 13) {
+                    download()
+                }
+            })
+        }
+
+        function download() {
+            var acId = document.getElementById("acId").value;
+            window.open("/acFun/download?id=" + acId)
+        }
+    </script>
+</head>
+<body onload="eventWindowLoaded()">
+<input placeholder="请输入视频id" id="acId"/>
+<button onclick="download()">下载</button>
+</body>
+</html>

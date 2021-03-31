@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public final class ParseFactory {
 
-    private static final Map<Class, ResourceParse> RESOURCE_CACHE = new HashMap<>(4);
+    private static final Map<Class<? extends ResourceParse>, ResourceParse> RESOURCE_CACHE = new HashMap<>(4);
 
     public static ResourceParse createKuWoParse() {
         ResourceParse parse = RESOURCE_CACHE.get(KuWoParse.class);
