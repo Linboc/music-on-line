@@ -39,7 +39,7 @@ public class UrlUtil {
         headers.add("Referer", "kuwo.cn");
         headers.add("Cookie", "kw_token=a");
         headers.add("csrf", "a");
-        HttpEntity<String> requestEntity = new HttpEntity((Object)null, headers);
+        HttpEntity<String> requestEntity = new HttpEntity(null, headers);
         return CLIENT.exchange(url, HttpMethod.GET, requestEntity, String.class, new Object[0]).getBody();
     }
 
