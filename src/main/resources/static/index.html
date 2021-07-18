@@ -176,7 +176,7 @@
 
         function keyboardEvent() {
             // 空格暂停
-            if (event.keyCode === 32) {
+            if (event.keyCode === 32 && document.activeElement.nodeName === 'BODY') {
                 var videoElement = document.getElementById("theVideo");
                 videoElement.paused ? videoElement.play(): videoElement.pause()
             }
