@@ -6,6 +6,8 @@
 
     <script>
 
+        document.onkeydown = keyboardEvent;
+
         var musics = [{
             url: "https://fdfs.xmcdn.com/group23/M07/67/32/wKgJNFg38feQcfezABpesNaw4p8037.m4a",
             title: "告白气球",
@@ -169,6 +171,15 @@
         function searchFormat(content, page) {
             page = page ? page : 1;
             return kwPage + "?key=" + content + "&pn=" + page + "&rn=30";
+        }
+
+
+        function keyboardEvent() {
+            // 空格暂停
+            if (event.keyCode === 32) {
+                var videoElement = document.getElementById("theVideo");
+                videoElement.paused ? videoElement.play(): videoElement.pause()
+            }
         }
 
     </script>
