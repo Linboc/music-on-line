@@ -175,6 +175,14 @@
 
 
         function keyboardEvent() {
+
+            // 确认搜索
+            if (event.keyCode === 13 && document.activeElement.nodeName === 'INPUT') {
+                if (document.getElementById("search") === document.activeElement || document.getElementById("page") === document.activeElement) {
+                    search()
+                }
+            }
+
             // 空格暂停
             if (event.keyCode === 32 && document.activeElement.nodeName === 'BODY') {
                 var videoElement = document.getElementById("theVideo");
